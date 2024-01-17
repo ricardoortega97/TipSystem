@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 //main
     @Override
@@ -16,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fithteen();
-
+        eightteen();
+        twenty();
     }
 
     private void fithteen(){
@@ -24,23 +29,59 @@ public class MainActivity extends AppCompatActivity {
         tip1.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              EditText amount = findViewById(R.id.billAmount);
+              EditText amount = findViewById(R.id.billAmount);//input the amount
               TextView tipAndTotal = findViewById(R.id.total);
               String bill = amount.getText().toString();
 
-              double intAmount = (double) Integer.parseInt(bill);
+              double intAmount = Double.parseDouble(bill);
               double tip = intAmount * 0.15;
               double total = intAmount + tip;
-              String strTip = String.valueOf(tip);
-              String strTotal = String.valueOf(total);
+              String strTip = String.format("%.2f", tip);
+              String strTotal = String.format("%.2f", total);
               Resources res = getResources();
               String strAmount = res.getString(R.string.tip, strTip, strTotal);
               tipAndTotal.setText(strAmount);
           }
       });
+    }
+    private void eightteen(){
+        Button tip1 = findViewById(R.id.tip2);
+        tip1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText amount = findViewById(R.id.billAmount);//input the amount
+                TextView tipAndTotal = findViewById(R.id.total);
+                String bill = amount.getText().toString();
 
+                double intAmount = Double.parseDouble(bill);
+                double tip = intAmount * 0.18;
+                double total = intAmount + tip;
+                String strTip = String.format("%.2f", tip);
+                String strTotal = String.format("%.2f", total);
+                Resources res = getResources();
+                String strAmount = res.getString(R.string.tip, strTip, strTotal);
+                tipAndTotal.setText(strAmount);
+            }
+        });
+    }
+    private void twenty(){
+        Button tip1 = findViewById(R.id.tip3);
+        tip1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText amount = findViewById(R.id.billAmount);//input the amount
+                TextView tipAndTotal = findViewById(R.id.total);
+                String bill = amount.getText().toString();
 
-
-
+                double intAmount = Double.parseDouble(bill);
+                double tip = intAmount * 0.20;
+                double total = intAmount + tip;
+                String strTip = String.format("%.2f", tip);
+                String strTotal = String.format("%.2f", total);
+                Resources res = getResources();
+                String strAmount = res.getString(R.string.tip, strTip, strTotal);
+                tipAndTotal.setText(strAmount);
+            }
+        });
     }
 }
