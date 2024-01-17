@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TipSystem</string>
+    <string name="tip">Tip: $ %1$s, Total $ %2$s </string>
+</resources>
